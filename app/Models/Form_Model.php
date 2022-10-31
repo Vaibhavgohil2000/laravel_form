@@ -11,6 +11,7 @@ class Form_Model extends Model
     protected $table='laravel_form';
     protected $fillabel = [
 
+        'id',
         'name',
         'city',
         'phone',

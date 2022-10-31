@@ -22,7 +22,9 @@ use \App\Http\Controllers\FormController;
 Route::get('/demo',[Pcontroller::class,'show']);    
 
 //FormController
-Route::get('/',[FormController::class,'create']);    
+Route::get('/create-form',[FormController::class,'create']);    
 Route::post('/store-form',[FormController::class,'store']);    
-Route::get('/show-form',[FormController::class,'index']);    
-Route::get('/edit-form',[FormController::class,'edit']);    
+Route::get('/',[FormController::class,'index']);    
+Route::get('/edit-form/{id}',[FormController::class,'edit']); 
+Route::post('/update-form/{id}',[FormController::class,'update']);    
+Route::get('/destroy-form/{id}',[FormController::class,'destroy']); 

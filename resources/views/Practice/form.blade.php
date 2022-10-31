@@ -34,9 +34,12 @@
                <input type="text" name="phone" id="phone" class="form-control" required=""> 
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-
-        </div>
+        </form>
+        
+        {{-- create another button to redirect page --}}
+        {{-- <button onclick="window.location='{{url('/)}}'" class="btn btn-primary btn-sm" >home</a>  --}}
+      
+    </div>
     </div>
   
 </body>

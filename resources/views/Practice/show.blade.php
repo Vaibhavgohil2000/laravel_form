@@ -7,9 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Document</title>
+
+    <style>
+        .mt{
+            margin-top: 150px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-4">
+    <div class="container mt">
+        <a href="{{url('create-form')}}" class="btn btn-primary btn-lm pb-2 mb-2 pr-3" >Create</a> 
     <table class="table table-bordered table-striped mg-5">
         <thead>
         <tr>
@@ -24,13 +31,13 @@
             <tr>
                 <td>{{ $item->id}}</td>
                 <td>{{ $item->name}}</td>
-                <td>{{ $item->city}}</td>
+                <td>{{ $item->city}}</td>   
                 <td>{{ $item->phone}}</td> 
                 <td>
-                   <a href="{{url('edit-form')}}" class="btn btn-primary btn-sm" >Edit</a> 
+                   <a href="{{url('edit-form')}}/{{$item->id}}" class="btn btn-primary btn-lm" >Edit</a> 
                 </td>    
                 <td>
-                   <a href="" class="btn btn-danger btn-sm">Delete</a> 
+                   <a href="{{url('destroy-form')}}/{{$item->id}}" class="btn btn-danger btn-sm">Delete</a> 
                 </td>    
             </tr>  
             @endforeach  

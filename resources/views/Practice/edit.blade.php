@@ -19,7 +19,7 @@
             Add Blog Post Form Example
         </div>
         <div class="crud-body">
-            <form name="add-blog-post-form" id="add-blog-post-form" method="POST" action="{{url('store-form')}}">
+            <form name="add-blog-post-form" id="add-blog-post-form" method="POST" action="{{url('update-form')}}/{{$Form_Model['id']}}">
             @csrf
             {{-- @foreach($Form_Model as $edit) --}}
                     
@@ -36,7 +36,7 @@
                 <input type="text" value={{{$Form_Model['phone']}}} name="phone" id="phone" class="form-control" required=""> 
             </div>
             {{-- @endforeach --}}
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" value="update User">Submit</button>
             </form>
 
         </div>
