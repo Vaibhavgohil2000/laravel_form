@@ -10,7 +10,7 @@
 
     <style>
         .mt{
-            margin-top: 150px;
+            margin-top: 150px;   
         }
     </style>
 </head>
@@ -24,6 +24,8 @@
             <th scope="col">Name</th>
             <th scope="col">City</th>
             <th scope="col">Phone</th>     
+            <th scope="col"><center>Action</center></th>     
+            
         </tr>  
         </thead>
         <tbody> 
@@ -34,11 +36,11 @@
                 <td>{{ $item->city}}</td>   
                 <td>{{ $item->phone}}</td> 
                 <td>
+                    <center>
                    <a href="{{url('edit-form')}}/{{$item->id}}" class="btn btn-primary btn-lm" >Edit</a> 
-                </td>    
-                <td>
-                   <a href="{{url('destroy-form')}}/{{$item->id}}" class="btn btn-danger btn-sm">Delete</a> 
-                </td>    
+                   <a href="{{url('destroy-form')}}/{{$item->id}}" class="btn btn-danger btn-lm">Delete</a> 
+                    </center>
+                </td>     
             </tr>  
             @endforeach  
         </tbody>   
