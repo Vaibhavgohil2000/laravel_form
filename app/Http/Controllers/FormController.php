@@ -9,17 +9,25 @@ class FormController extends Controller
 {
     function create(){
        
-        return view('Practice.form');
-
+        return view('Practice.form')->with('success','Item created successfully!');
     }
     function store(Request $requesat){
+       
+        $validated = $requesat->validate([
+            // 'name' => 'required|unique:posts|max:255',
+            'name' => 'required|regex:/^[\pL\s\-]+$/u|max:255',
+            'city' => 'required|max:100|regex:/^[\pL\s\-]+$/u',
+            'phone' => 'required|numeric|digits:10',
+            
+        ]);
       
         $Form_Model = new Form_Model;
         $Form_Model->name = $requesat->name;
         $Form_Model->city = $requesat->city;
         $Form_Model->phone = $requesat->phone;
         $Form_Model->save();
-        return redirect('/')-> with( 'success', __('Agent successfully deleted!'));
+
+        return redirect('/');
 
     }
     function index(){
@@ -56,6 +64,14 @@ class FormController extends Controller
      */
     function update(Request $request ,$id){
 
+        $validated = $request->validate([
+            // 'name' => 'required|unique:posts|max:255',
+            'name' => 'required|regex:/^[\pL\s\-]+$/u|max:255',
+            'city' => 'required|max:100|regex:/^[\pL\s\-]+$/u',
+            'phone' => 'required|numeric|digits:10',
+            
+        ]);
+
         $name= $request->input('name');
         $city= $request->input('city');
         $phone= $request->input('phone');
@@ -74,7 +90,7 @@ class FormController extends Controller
         // dump($Form_Model_delete);
         $Form_Model_delete -> delete();
 
-        return redirect('/')-> with( 'success', __('Agent successfully deleted!'));
+        return redirect('/');
 
 
     }
