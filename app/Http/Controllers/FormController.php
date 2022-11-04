@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Form_Model;
 use DB;
@@ -31,9 +31,12 @@ class FormController extends Controller
 
     }
     function index(){
-    
-        $Form_Model = Form_Model::paginate(5); 
-        return view('Practice.show',compact('Form_Model'));
+        if(Auth::check()){
+
+            $Form_Model = Form_Model::paginate(5); 
+            return view('Practice.show',compact('Form_Model'));
+        }
+        return redirect("/")->withSuccess('Opps! You do not have access');
     }
 
         /**

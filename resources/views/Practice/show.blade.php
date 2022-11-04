@@ -1,7 +1,9 @@
 
 <!DOCTYPE html>
+@extends('layout')  
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -15,6 +17,7 @@
     </style>
 </head>
 <body>
+    @section('content')
     <div class="container mt">
         <a href="{{url('create-form')}}" class="btn btn-primary btn-lm pb-2 mb-2 pr-3" >Create</a> 
     <table class="table table-bordered table-striped mg-5">
@@ -45,9 +48,10 @@
             @endforeach  
         </tbody>   
     </table>
-    <h5> Pagination:</h5>
+
     {{-- {{ $Form_Model->links() }} --}}
     {{ $Form_Model->links() }}
-</div>  
+</div> 
+@endsection 
 </body>
 </html>
