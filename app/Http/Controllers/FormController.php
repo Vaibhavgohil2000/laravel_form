@@ -27,7 +27,7 @@ class FormController extends Controller
         $Form_Model->phone = $requesat->phone;
         $Form_Model->save();
 
-        return redirect('/');
+        return redirect('/index-form');
 
     }
     function index(){
@@ -84,7 +84,7 @@ class FormController extends Controller
                         'city' => $city,
                         'phone'=> $phone]);
      
-            return redirect('/');
+            return redirect('/index-form');
     }
 
     function destroy($id){
@@ -93,7 +93,7 @@ class FormController extends Controller
         // dump($Form_Model_delete);
         $Form_Model_delete -> delete();
 
-        return redirect('/');
+        return redirect('/index-form');
 
 
     }

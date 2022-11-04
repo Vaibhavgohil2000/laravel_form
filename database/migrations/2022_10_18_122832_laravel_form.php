@@ -18,6 +18,7 @@ class LaravelForm extends Migration
             $table->string('name');
             $table->string('city');
             $table->integer('phone');
+            $table->string('user_type')->nullable();
             $table->timestamps();
         });
 

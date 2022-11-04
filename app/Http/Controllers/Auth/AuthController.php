@@ -33,7 +33,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->intended('/index-form')->withSuccess('you have successfully login');
         }
-        return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
+        return redirect("/")->withSuccess('Oppes! You have entered invalid credentials');
     }
 
     public function postregistar(Request $request)
@@ -45,7 +45,7 @@ class AuthController extends Controller
         ]);
         $data = $request->all();
         $check = $this->create($data);
-        return redirect("login")->withSuccess('Great! You have Successfully registar');
+        return redirect("/")->withSuccess('Great! You have Successfully registar');
     }
 
     public function create(array $data)
