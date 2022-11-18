@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Pcontroller;
 use \App\Http\Controllers\FormController;
 use \App\Http\Controllers\Auth\AuthController;
+use \App\Http\Controllers\ExcelController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,3 +39,8 @@ Route::get('/registar',[AuthController::class,'registar'])->name('registar');
 Route::post('/post-registar',[AuthController::class, 'postregistar'])->name('registar.post');
 Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 Route::get('/dashboard',[AuthController::class, 'dashboard']);
+
+// excelfile
+Route::get('/importexportview',[ExcelController::class,'importexportview']);
+Route::get('/export',[ExcelController::class,'export'])->name('export');
+Route::post('/import',[ExcelController::class,'import'])->name('importdata');

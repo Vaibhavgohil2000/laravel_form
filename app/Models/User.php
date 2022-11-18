@@ -17,11 +17,15 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    use HasFactory;
+    protected $tabl="larave_form";
     protected $fillable = [
+        'id',
         'name',
-        'email',
-        'password',
+        'city',
+        'phone',
     ];
+    
 
     /**
      * The attributes that should be hidden for serialization.

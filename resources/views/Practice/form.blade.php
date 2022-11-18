@@ -49,7 +49,7 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                      
                         <select name="dog-names" id="dog-names">
                             <option value="rigatoni">Rigatoni</option>
@@ -68,7 +68,7 @@
                           <li><a class="dropdown-item" href="#">Another action</a></li>
                           <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
-                      </div>
+                      </div> --}}
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
 
