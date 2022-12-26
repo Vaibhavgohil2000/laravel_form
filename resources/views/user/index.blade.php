@@ -23,18 +23,18 @@
     @section('content')
         <div class="container mt">
             @csrf
-            <div class="card-body">
+            {{-- <div class="card-body">
                 <form action="{{ route('importdata') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="file" name="file" class="form-control">
                     <button class="btn btn-success" type="submit">Import User Data</button>
                     <br>
                 </form>
-            </div>
-            <a href="{{ url('create-form') }}" class="btn btn-primary btn-lm pb-2 mb-2 pr-3">Create</a>
+            </div> --}}
+            {{-- <a href="{{ url('create-form') }}" class="btn btn-primary btn-lm pb-2 mb-2 pr-3">Create</a> --}}
            
-            <a class="btn btn-warning btn-lm pb-2 mb-2 pr-3" href="{{ route('export') }}">Export User Data</a>
-            <a href="{{url('usershow')}}"class="btn btn-primary btn-lm pb-2 mb-2 pr-3 ml-10;">user</a>
+            {{-- <a class="btn btn-warning btn-lm pb-2 mb-2 pr-3" href="{{ route('export') }}">Export User Data</a> --}}
+            {{-- <a href="{{url('index')}}"class="btn btn-primary btn-lm pb-2 mb-2 pr-3 ml-10;">user</a> --}}
             {{-- <input type="file" name="file" class="form-control"> --}}
          <?php
             $i=1;
@@ -44,8 +44,9 @@
                     <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Name</th>
-                        <th scope="col">City</th>
-                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        {{-- <th scope="col">City</th>
+                        <th scope="col">Phone</th> --}}
                         
                         <th scope="col">
                             <center>Action</center>
@@ -54,19 +55,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($Form_Model as $item)
+                    @foreach ($ushow as $ushowone)
                         <tr>
                             <td>{{ $i++ }}</td>
-                            <td>{{ $item->name }}</td>
-                            <td>{{ $item->city }}</td>
-                            <td>{{ $item->phone }}</td>
+                            <td>{{ $ushowone->name }}</td>
+                            <td>{{ $ushowone->email }}</td>
+                            {{-- <td>{{ $item->phone }}</td> --}}
                             <td>
                                 <center>
-                                    <a href="{{ url('edit-form') }}/{{ $item->id }}"
+                                    <a href="{{ url('edit-form') }}/{{ $ushowone->id }}"
                                         class="btn btn-primary btn-lm">Edit</a>
-                                    <a href="{{ url('destroy-form') }}/{{ $item->id }}"
+                                    <a href="{{ url('destroy-form') }}/{{ $ushowone->id }}"
                                         class="btn btn-danger btn-lm">Delete</a>
-                                        <input data-id="{{$item->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $item->status ? 'checked' : '' }}>
+                                        <input data-id="{{$ushowone->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $ushowone->status ? 'checked' : '' }}>
                                 </center>
                                 </td>
                             </tr>
@@ -92,7 +93,7 @@
                 })
               </script>
             {{-- {{ $Form_Model->links() }} --}}
-            {{ $Form_Model->links()}}
+            {{-- {{ $User->links()}} --}}
         </div>
     @endsection
 </body>

@@ -18,12 +18,14 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     use HasFactory;
-    protected $tabl="larave_form";
+    protected $tabl="users";
     protected $fillable = [
         'id',
         'name',
-        'city',
-        'phone',
+        'email',
+        'password',
+        'status',
+       
     ];
     
 

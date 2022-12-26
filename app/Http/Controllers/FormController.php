@@ -49,7 +49,7 @@ class FormController extends Controller
 
     function edit(Request $request ,$id){
            
-        // $Form_Model= Form_Model::all();
+            // $Form_Model= Form_Model::all();
            $Form_Model= Form_Model::find($id);
            return view('Practice.edit',compact('Form_Model'));
 
@@ -87,6 +87,7 @@ class FormController extends Controller
             return redirect('/index-form');
     }
 
+    
     function destroy($id){
 
         $Form_Model_delete = Form_Model::find($id);

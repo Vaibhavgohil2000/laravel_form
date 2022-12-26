@@ -18,5 +18,6 @@ class Form_Model extends Model
         'name',
         'city',
         'phone',
+        'status'
     ];
 }

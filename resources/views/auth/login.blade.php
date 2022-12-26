@@ -26,7 +26,7 @@
                                         <label for="email address" class="col-md-4 col-form label text-md right">E-mail
                                             Address</label>
                                         <div class="col-md-6">
-                                            <input type="text" name="email" id="email_address"
+                                            <input type="text" name="email" id="email_address" value="{{old('email')}}"
                                                 class="form-control @error('email', 'post') is-invalid @enderror autofocus">
                                             @error('email')
                                                 <div class="alert alert-danger">{{ $message }}</div>
