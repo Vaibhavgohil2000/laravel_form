@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Form_Model;
-use DB;
+use Illuminate\Support\Facades\DB;
 class FormController extends Controller
 {
     function create(){

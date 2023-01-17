@@ -73,14 +73,22 @@
                 @endguest
             </ul>
             @if (session('success'))
-
+                
             <div class="alert alert-success" role="alert">
-
+                
                 {{ session('success') }}
-
+                
             </div>
-
-        @endif
+            @elseif (session('danger'))
+            <div class="alert alert-danger" role="alert">
+                    {{ session('danger') }}
+            </div>
+            @elseif(session('warning'))
+            <div class="alert alert-warning" role="warning">
+                    {{ session('warning') }}
+            </div>
+            
+            @endif
         </div>
     </div>
 </nav>

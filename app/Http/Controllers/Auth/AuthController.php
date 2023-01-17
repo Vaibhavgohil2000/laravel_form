@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Form_Model;
-use Hash;
-use Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -25,25 +24,30 @@ class AuthController extends Controller
     {
 
         $request->validate([
-          
+
             'email' => 'required',
             'password' => 'required',
-          
+
         ]);
-        // $id = Auth::user()->id;
-        // print_r($id);
-        // exit('hfhf');
-        $active = User::where('email',$request->email)->first();
-        
+
+        $active = User::where('email', $request->email)->first();
+
         $credentials = $request->only('email', 'password');
-        // dump($active->status);
-        // exit();
-       
-        if ((Auth::attempt($credentials) && $active->status=="1")) {
-               
-            return redirect()->intended('/index-form')->withSuccess('you have successfully login');
+        if (Auth::attempt($credentials)) {
+            if ($active->status == "1") {
+                return redirect("/index-form")->with('success', 'you have successfully login');
+
+            } else {
+
+                return redirect("/")->with('warning', 'You have not permission to Login');
+
+            }
+
+        } else {
+
+            return redirect("/")->with('danger', 'Oppes! You have entered invalid credentials');
+
         }
-        return redirect("/")->withSuccess('Oppes! You have entered invalid credentials')->withInput();
     }
 
     public function postregistar(Request $request)
@@ -54,7 +58,7 @@ class AuthController extends Controller
             'password' => 'required|min:6',
         ]);
         $data = $request->all();
-        $check = $this->create($data); 
+        $check = $this->create($data);
         return redirect("/")->withSuccess('Great! You have Successfully registar');
     }
 
@@ -64,27 +68,26 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            
 
         ]);
 
     }
-    public function usershow(Request $request){
-        $datashow = User::all(); 
-        // dump($datashow);
-        //     exit('djdd');
+    public function usershow(Request $request)
+    {
+        $datashow = User::all();
       
-        return view('user.index',['ushow'=>$datashow]);
+        return view('user.index', ['ushow' => $datashow]);
     }
 
-    public function status(Request $request){
+    public function status(Request $request)
+    {
         $user = User::find($request->user_id);
-        
+
         $user->status = $request->status;
-       
+
         $user->save();
-  
-        return response()->json(['success'=>'Status change successfully.']);
+
+        return response()->json(['success' => 'Status change successfully.']);
     }
 
     public function logout()
