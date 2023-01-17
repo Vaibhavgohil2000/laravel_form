@@ -7,7 +7,12 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+// use Crypt;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Contracts\Encryption\DecryptException;
+
 
 class AuthController extends Controller
 {
@@ -75,26 +80,61 @@ class AuthController extends Controller
     public function usershow(Request $request)
     {
         $datashow = User::all();
-      
-        return view('user.index', ['ushow' => $datashow]);
+        $datashow = User::paginate(2);
+        
+        // return view('user.index', ['ushow' => $datashow]);
+        return view('user.index', ['ushow1' => $datashow]);
+        // return view('user.index',compact('datashow'));
     }
-
+    
     public function status(Request $request)
     {
         $user = User::find($request->user_id);
-
+        
         $user->status = $request->status;
-
+        
         $user->save();
-
+        
         return response()->json(['success' => 'Status change successfully.']);
     }
-
+    
     public function logout()
     {
         Session::flush();
         Auth::logout();
         return Redirect('/');
     }
-
+    
+    public function edit($id){
+        $editshow=user::find($id);
+        // dump($editshow);
+        // exit();
+        return view('user.edit',compact('editshow'));
+    }
+    
+    public function update(Request $request,$id){
+        $validate= $request->validate([
+            
+            'name'=>'required|min:2|regex:/^[\pL\s\-]+$/u|max:255',
+            'email'=>'required|email',
+            // 'password'=>'required|min:6',
+        ]);
+        
+        $name= $request->input('name');
+        $email= $request->input('email');
+        // $password=$request->input('password');
+        
+        $data=DB::table('users')->where('id',$id)->update(['name'=>$name,'email'=>$email]);
+        
+        return redirect('/usershow');
+        
+        
+    }
+    public function destroy1($id){
+        $delete_id= user::find($id);
+        
+        $delete_id->delete();
+        return redirect('/usershow');
+        
+    }
 }

@@ -49,3 +49,6 @@ Route::post('/import',[ExcelController::class,'import'])->name('importdata');
 
 // user management
 Route::get('/usershow',[AuthController::class,'usershow']);
+Route::get('/destroy-form1/{id}',[AuthController::class,'destroy1']); 
+Route::get('/edit-form1/{id}',[AuthController::class,'edit']);
+Route::post('/update-form1/{id}',[AuthController::class,'update']);

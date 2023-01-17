@@ -30,7 +30,7 @@ class FormController extends Controller
         return redirect('/index-form');
 
     }
-    function index(){
+        function index(){
         if(Auth::check()){
 
             $Form_Model = Form_Model::paginate(5); 

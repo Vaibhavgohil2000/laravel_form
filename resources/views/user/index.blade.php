@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"  /> --}}
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
@@ -39,6 +40,7 @@
          <?php
             $i=1;
          ?>
+            
             <table class="table table-bordered table-striped mg-5">
                 <thead>
                     <tr>
@@ -55,23 +57,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($ushow as $ushowone)
-                        <tr>
-                            <td>{{ $i++ }}</td>
-                            <td>{{ $ushowone->name }}</td>
-                            <td>{{ $ushowone->email }}</td>
-                            {{-- <td>{{ $item->phone }}</td> --}}
-                            <td>
-                                <center>
-                                    <a href="{{ url('edit-form') }}/{{ $ushowone->id }}"
-                                        class="btn btn-primary btn-lm">Edit</a>
-                                    <a href="{{ url('destroy-form') }}/{{ $ushowone->id }}"
-                                        class="btn btn-danger btn-lm">Delete</a>
-                                        <input data-id="{{$ushowone->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $ushowone->status ? 'checked' : '' }}>
-                                </center>
-                                </td>
-                            </tr>
-                            @endforeach             
+                    @foreach ($ushow1  as $ushowone)
+                    <tr>
+                        <td>{{ $i++ }}</td>
+                        <td>{{ $ushowone->name }}</td>
+                        <td>{{ $ushowone->email }}</td>
+                        {{-- <td>{{ $item->phone }}</td> --}}
+                        <td>
+                           
+                            <center>
+                                <a href="{{ url('edit-form1') }}/{{ $ushowone->id }}"
+                                    class="btn btn-primary btn-lm">Edit</a>
+                                 <a href="{{ url('destroy-form1') }}/{{ $ushowone->id }}"
+                                    class="btn btn-danger btn-lm">Delete</a> 
+                                    
+                                    <input data-id="{{$ushowone->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $ushowone->status ? 'checked' : '' }}>
+                            </center>
+                            </td>
+                        </tr>
+                        @endforeach             
+                   
                 </tbody>
             </table>
             <script>
@@ -91,9 +96,11 @@
                       });
                   })
                 })
-              </script>
+              </script>         
+
+
             {{-- {{ $Form_Model->links() }} --}}
-            {{-- {{ $User->links()}} --}}
+            {{ $ushow1->links()}}
         </div>
     @endsection
 </body>
